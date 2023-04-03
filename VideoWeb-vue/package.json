@@ -1,0 +1,25 @@
+{
+  "name": "videoweb-vue",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@cloudgeek/vue3-video-player": "^0.3.10",
+    "axios": "^1.3.4",
+    "element-plus": "^2.3.2",
+    "pinia": "^2.0.32",
+    "vue": "^3.2.47",
+    "vue-router": "^4.1.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^4.0.0",
+    "less": "^4.1.3",
+    "less-loader": "^11.1.0",
+    "vite": "^4.1.4",
+    "webpack-cli": "^5.0.1"
+  }
+}
