@@ -4,16 +4,30 @@ import lombok.Data;
 
 @Data
 public class Result {
-    private String CODE;
-    private String MESSAGE;
-    private Object DATA;
+    //成功代码
+    private static final String SUCCESS_CODE = "200";
+    //失败代码
+    private static final String ERROR_CODE = "-1";
 
-    public void success(Object DATA) {
-        this.setCODE("100");
-        this.setDATA(DATA);
+    private String code;
+    private String message;
+    private Object data;
+
+    public static Result success() {
+        Result result = new Result();
+        result.setCode(SUCCESS_CODE);
+        return result;
     }
-    public void error(Object DATA) {
-        this.setCODE("-1");
-        this.setDATA(DATA);
+    public static Result success(Object data) {
+        Result result = new Result();
+        result.setCode(SUCCESS_CODE);
+        result.setData(data);
+        return result;
+    }
+    public static Result error(String msg) {
+        Result result = new Result();
+        result.setCode(ERROR_CODE);
+        result.setMessage(msg);
+        return result;
     }
 }

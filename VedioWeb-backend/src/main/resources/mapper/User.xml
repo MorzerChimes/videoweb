@@ -10,10 +10,61 @@
 
 <mapper namespace="com.videoweb.mapper.UserMapper">
     <select id="listUsers" resultType="com.videoweb.entity.User">
-        select * from user
+        select * from `user`
     </select>
 
-    <!-- 登录 -->
+    <!-- 添加用户 -->
+    <insert id="addUser">
+        insert into `user`(number, password) values (#{number}, #{password})
+    </insert>
+
+    <!-- 通过uid删除用户 -->
+    <delete id="delUserByUid">
+        delete from `user` where uid = #{uid}
+    </delete>
+
+    <!-- 通过手机号删除用户 -->
+    <delete id="delUserByNum">
+        delete from `user` where number = #{number}
+    </delete>
+
+    <!-- 通过uid更新用户信息 -->
+    <update id="updateUserByUid">
+        update `user` set username = #{username}, avatar = #{avatar}, sex = #{sex}, birthday = #{birthday},  where uid = #{uid}
+    </update>
+
+    <!-- 通过uid更改用户密码 -->
+    <update id="updateUserPswByUid">
+        update `user` set password = #{password},  where uid = #{uid}
+    </update>
+
+    <!-- 通过手机号更新用户信息 -->
+    <update id="updateUserByNum">
+        update `user` set username = #{username}, avatar = #{avatar}, sex = #{sex}, birthday = #{birthday},  where number = #{number}
+    </update>
+
+    <!-- 通过手机号更改用户密码 -->
+    <update id="updateUserPswByNum">
+        update `user` set password = #{password},  where number = #{number}
+    </update>
+
+    <!-- 通过uid查找用户 -->
+    <select id="getUserByUid" resultType="com.videoweb.entity.User">
+        select * from `user` where uid = #{uid}
+    </select>
+
+    <!-- 通过条件查找用户 -->
+
+    <select id="getUerByCon" resultType="com.videoweb.entity.User">
+        select * from `user`
+            <where>
+                <if test="condition != null and condition != ''">
+                    username like concat('%', #{condition}, '%') or uid = #{uid}
+                </if>
+            </where>
+    </select>
+
+    <!-- 通过手机号与密码查询用户 -->
     <select id="getUserByNumAndPsw" resultType="com.videoweb.entity.User">
         select * from `user` where number = #{number} and password = #{password}
     </select>

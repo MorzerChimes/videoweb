@@ -16,7 +16,7 @@ public class User {
     private String number;
     private String password;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GTM+8")
-    private Date createTime;
+    private Date create_time;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "GTM+8")
-    private Date updateTime;
+    private Date update_time;
 }
